@@ -29,7 +29,7 @@ docker context create minion --docker "host=ssh://harr@minion.local"
 docker --context minion build --platform linux/amd64 -t keyboard-pic-scraper .
 ssh harr@minion.local
 docker stop scraper && docker rm scraper
-docker run -d --name scraper -e UPLOAD_URL="http://192.168.0.111/api/image?fit=cover" keyboard-pic-scraper
+docker run -d --name scraper -e UPLOAD_URL="http://192.168.0.111/api/image?fit=cover" ghcr.io/ZalaPanda/keyboard-pic-scraper:latest
 ```
 
 Replace the example IP with your display's IP or a hostname resolvable from inside the container. The default is `esp32-display.local`, but Docker may not resolve `.local` names. Set `UPLOAD_URL` to change the upload endpoint or `POLL_INTERVAL_MS` to change the delay between checks.
